@@ -1,4 +1,6 @@
+import User.User;
 import delivery.Delivery;
+import flowerstore.FlowerPack;
 import flowerstore.Item;
 import lombok.Getter;
 import lombok.Setter;
@@ -43,5 +45,26 @@ public class Order {
                 items.remove(index);
             }
         }
+    }
+
+    public List<User> users = new ArrayList<User>();
+
+    public void addUser(User user) {
+        users.add(user);
+    }
+
+    public void removeUser(User user) {
+        users.remove(user);
+    }
+
+    public void notifyUser() {
+        for (int i = 0; i < users.size(); i++) {
+            User user = users.get(i);
+            user.update(true);
+        }
+    }
+
+    public void order() {
+        notifyUser();
     }
 }
